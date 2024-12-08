@@ -1,4 +1,4 @@
-package com.vipuljha.jetnews.ui.theme
+package com.vipuljha.jetnews.core.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

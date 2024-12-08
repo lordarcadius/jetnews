@@ -1,4 +1,4 @@
-package com.vipuljha.jetnews.ui.theme
+package com.vipuljha.jetnews.core.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
