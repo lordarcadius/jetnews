@@ -4,7 +4,7 @@ import com.vipuljha.jetnews.features.onboarding.domain.OnboardingManager
 import kotlinx.coroutines.flow.Flow
 
 class ReadAppEntry(private val onboardingManager: OnboardingManager) {
-    suspend operator fun invoke(): Flow<Boolean> {
+    operator fun invoke(): Flow<Boolean> {
         return onboardingManager.readAppEntry()
     }
 }
