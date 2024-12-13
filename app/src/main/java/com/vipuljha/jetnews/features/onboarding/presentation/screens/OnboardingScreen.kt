@@ -26,10 +26,14 @@ import com.vipuljha.jetnews.core.theme.Dimens.pageIndicatorWidth
 import com.vipuljha.jetnews.features.onboarding.presentation.pages
 import com.vipuljha.jetnews.features.onboarding.presentation.components.OnboardingPage
 import com.vipuljha.jetnews.features.onboarding.presentation.components.PageIndicator
+import com.vipuljha.jetnews.features.onboarding.presentation.viewmodels.OnboardingEvents
 import kotlinx.coroutines.launch
 
 @Composable
-fun OnboardingScreen(padding: PaddingValues) {
+fun OnboardingScreen(
+    padding: PaddingValues,
+    event: (OnboardingEvents) -> Unit
+) {
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
             pages.size
@@ -80,8 +84,8 @@ fun OnboardingScreen(padding: PaddingValues) {
                     text = buttonState.value[1],
                     onClick = {
                         scope.launch {
-                            if (pagerState.currentPage == 3) {
-                                //TODO: Navigate to main screen
+                            if (pagerState.currentPage == 2) {
+                                event(OnboardingEvents.SaveEntry)
                             } else {
                                 pagerState.animateScrollToPage(
                                     page = pagerState.currentPage + 1
@@ -92,6 +96,6 @@ fun OnboardingScreen(padding: PaddingValues) {
                 )
             }
         }
-        Spacer(modifier = Modifier.weight(0.5f))
+        Spacer(modifier = Modifier.weight(0.1f))
     }
 }
