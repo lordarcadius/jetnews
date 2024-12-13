@@ -29,8 +29,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             JetNewsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    val startDestination = viewModel.startDestination
-                    NavGraph(startDestination = startDestination, innerPadding = innerPadding)
+                    NavGraph(
+                        startDestination = viewModel.startDestination.route,
+                        innerPadding = innerPadding
+                    )
                 }
             }
         }

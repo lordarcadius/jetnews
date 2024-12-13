@@ -9,7 +9,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navigation
 import com.vipuljha.jetnews.features.onboarding.presentation.screens.OnboardingScreen
 import com.vipuljha.jetnews.features.onboarding.presentation.viewmodels.OnboardingViewModel
 
@@ -17,23 +16,13 @@ import com.vipuljha.jetnews.features.onboarding.presentation.viewmodels.Onboardi
 fun NavGraph(startDestination: String, innerPadding: PaddingValues) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = startDestination) {
-        navigation(
-            route = Routes.AppStartNavigation.route,
-            startDestination = Routes.OnBoardingScreen.route
-        ) {
-            composable(route = Routes.OnBoardingScreen.route) {
-                val viewModel = hiltViewModel<OnboardingViewModel>()
-                OnboardingScreen(event = viewModel::onEvent)
-            }
+        composable(OnboardingRoute.route) {
+            val viewModel = hiltViewModel<OnboardingViewModel>()
+            OnboardingScreen(event = viewModel::onEvent)
         }
 
-        navigation(
-            route = Routes.NewsNavigation.route,
-            startDestination = Routes.NewsNavigatorScreen.route
-        ) {
-            composable(route = Routes.NewsNavigatorScreen.route) {
-                Text(text = "News Navigator Screen", modifier = Modifier.padding(innerPadding))
-            }
+        composable(NewsRoute.route) {
+            Text(text = "News Navigator Screen", modifier = Modifier.padding(innerPadding))
         }
     }
 }
