@@ -1,4 +1,4 @@
-package com.vipuljha.jetnews.features.onboarding.data
+package com.vipuljha.jetnews.features.onboarding.presentation
 
 import androidx.annotation.DrawableRes
 import com.vipuljha.jetnews.R

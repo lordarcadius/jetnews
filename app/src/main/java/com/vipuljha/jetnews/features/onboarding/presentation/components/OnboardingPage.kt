@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding1
 import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding2
-import com.vipuljha.jetnews.features.onboarding.data.Page
+import com.vipuljha.jetnews.features.onboarding.presentation.Page
 
 @Composable
 fun OnboardingPage(

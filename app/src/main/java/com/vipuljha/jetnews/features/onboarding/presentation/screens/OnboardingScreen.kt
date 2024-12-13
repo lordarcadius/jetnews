@@ -23,7 +23,7 @@ import com.vipuljha.jetnews.core.components.VButton
 import com.vipuljha.jetnews.core.components.VTextButton
 import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding2
 import com.vipuljha.jetnews.core.theme.Dimens.pageIndicatorWidth
-import com.vipuljha.jetnews.features.onboarding.data.pages
+import com.vipuljha.jetnews.features.onboarding.presentation.pages
 import com.vipuljha.jetnews.features.onboarding.presentation.components.OnboardingPage
 import com.vipuljha.jetnews.features.onboarding.presentation.components.PageIndicator
 import kotlinx.coroutines.launch
