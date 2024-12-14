@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlinx.serialization)
+    alias(libs.plugins.gradle.secret)
 }
 
 android {
@@ -29,6 +30,9 @@ android {
                 "proguard-rules.pro"
             )
         }
+    }
+    secrets {
+        propertiesFileName = "local.properties"
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
