@@ -6,6 +6,8 @@ object Constants {
     const val BASE_URL = "https://newsapi.org/"
     const val USER_SETTINGS = "userSettings"
     const val APP_ENTRY_KEY = "appEntry"
+    const val DATABASE_NAME = "news_db"
+    const val ARTICLES_TABLE = "articles"
     const val API_KEY = BuildConfig.apiKey //Store in local.properties as apiKey variable
     val NEWS_SOURCES = listOf(
         "google-news-in",

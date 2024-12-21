@@ -1,6 +1,12 @@
 package com.vipuljha.jetnews.di
 
+import android.app.Application
+import androidx.room.Room
 import com.vipuljha.jetnews.core.network.RetrofitProvider
+import com.vipuljha.jetnews.core.utils.Constants.DATABASE_NAME
+import com.vipuljha.jetnews.features.news.data.datasources.local.NewsDao
+import com.vipuljha.jetnews.features.news.data.datasources.local.NewsDatabase
+import com.vipuljha.jetnews.features.news.data.datasources.local.NewsTypeConverter
 import com.vipuljha.jetnews.features.news.data.datasources.remote.NewsApi
 import com.vipuljha.jetnews.features.news.data.repositories.NewsRepositoryImpl
 import com.vipuljha.jetnews.features.news.domain.repositories.NewsRepository
@@ -32,5 +38,21 @@ object AppModule {
     fun provideNewsUseCases(repository: NewsRepository): NewsUseCases {
         return NewsUseCases(getNews = GetNews(repository), searchNews = SearchNews(repository))
     }
+
+    @Provides
+    @Singleton
+    fun provideNewsDatabase(application: Application): NewsDatabase {
+        return Room.databaseBuilder(
+            context = application,
+            klass = NewsDatabase::class.java,
+            name = DATABASE_NAME,
+        ).addTypeConverter(NewsTypeConverter())
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideNewsDao(newsDatabase: NewsDatabase): NewsDao = newsDatabase.newsDao
 
 }
