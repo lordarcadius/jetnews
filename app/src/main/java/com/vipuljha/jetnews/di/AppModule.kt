@@ -6,6 +6,7 @@ import com.vipuljha.jetnews.features.news.data.repositories.NewsRepositoryImpl
 import com.vipuljha.jetnews.features.news.domain.repositories.NewsRepository
 import com.vipuljha.jetnews.features.news.domain.usecases.GetNews
 import com.vipuljha.jetnews.features.news.domain.usecases.NewsUseCases
+import com.vipuljha.jetnews.features.news.domain.usecases.SearchNews
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,7 +30,7 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNewsUseCases(repository: NewsRepository): NewsUseCases {
-        return NewsUseCases(getNews = GetNews(repository))
+        return NewsUseCases(getNews = GetNews(repository), searchNews = SearchNews(repository))
     }
 
 }
