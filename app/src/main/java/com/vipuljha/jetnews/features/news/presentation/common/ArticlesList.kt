@@ -17,18 +17,18 @@ import com.vipuljha.jetnews.features.news.domain.models.Article
 @Composable
 fun ArticlesList(
     modifier: Modifier = Modifier,
-    article: LazyPagingItems<Article>,
+    articles: LazyPagingItems<Article>,
     onClick: (Article) -> Unit
 ) {
-    val handlePagingResult = handlePagingResult(article = article)
+    val handlePagingResult = handlePagingResult(article = articles)
     if (handlePagingResult) {
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(mediumPadding1),
             contentPadding = PaddingValues(all = extraSmallPadding2)
         ) {
-            items(count = article.itemCount) {
-                article[it]?.let { article ->
+            items(count = articles.itemCount) {
+                articles[it]?.let { article ->
                     ArticleCard(article = article, onClick = { onClick(article) })
                 }
             }

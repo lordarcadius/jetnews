@@ -15,3 +15,13 @@ data object OnboardingRoute : Route {
 data object NewsRoute : Route {
     override val route = "newsScreen"
 }
+
+@Serializable
+data object SearchRoute : Route {
+    override val route = "searchScreen"
+}
+
+@Serializable
+data object DetailsRoute : Route {
+    override val route = "detailsScreen"
+}
