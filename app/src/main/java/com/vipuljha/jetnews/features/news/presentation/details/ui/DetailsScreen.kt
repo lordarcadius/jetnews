@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.vipuljha.jetnews.R
 import com.vipuljha.jetnews.core.theme.Dimens.articleImageHeight
@@ -36,8 +37,9 @@ fun DetailsScreen(
     val context = LocalContext.current
     Column(
         modifier = Modifier
+            .fillMaxSize()
             .padding(paddingValues)
-            .fillMaxSize(),
+            .padding(horizontal = 10.dp),
     ) {
         DetailsTopBar(
             onBrowseClick = {

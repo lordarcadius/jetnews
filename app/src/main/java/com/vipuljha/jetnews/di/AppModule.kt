@@ -10,9 +10,12 @@ import com.vipuljha.jetnews.features.news.data.datasources.local.NewsTypeConvert
 import com.vipuljha.jetnews.features.news.data.datasources.remote.NewsApi
 import com.vipuljha.jetnews.features.news.data.repositories.NewsRepositoryImpl
 import com.vipuljha.jetnews.features.news.domain.repositories.NewsRepository
+import com.vipuljha.jetnews.features.news.domain.usecases.DeleteArticle
 import com.vipuljha.jetnews.features.news.domain.usecases.GetNews
+import com.vipuljha.jetnews.features.news.domain.usecases.GetSavedArticles
 import com.vipuljha.jetnews.features.news.domain.usecases.NewsUseCases
 import com.vipuljha.jetnews.features.news.domain.usecases.SearchNews
+import com.vipuljha.jetnews.features.news.domain.usecases.UpsertArticle
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,8 +38,14 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNewsUseCases(repository: NewsRepository): NewsUseCases {
-        return NewsUseCases(getNews = GetNews(repository), searchNews = SearchNews(repository))
+    fun provideNewsUseCases(repository: NewsRepository, newsDao: NewsDao): NewsUseCases {
+        return NewsUseCases(
+            getNews = GetNews(repository),
+            searchNews = SearchNews(repository),
+            upsertArticle = UpsertArticle(newsDao),
+            deleteArticle = DeleteArticle(newsDao),
+            getSavedArticles = GetSavedArticles(newsDao)
+        )
     }
 
     @Provides
