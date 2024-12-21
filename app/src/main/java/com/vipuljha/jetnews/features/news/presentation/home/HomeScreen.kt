@@ -1,24 +1,17 @@
 package com.vipuljha.jetnews.features.news.presentation.home
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.MarqueeSpacing
-import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -41,19 +34,6 @@ fun HomeScreen(
     articles: LazyPagingItems<Article>,
     navigate: (String) -> Unit
 ) {
-    val titles by remember {
-        derivedStateOf {
-            if (articles.itemCount > 10) {
-                articles.itemSnapshotList.items.slice(IntRange(start = 0, endInclusive = 9))
-                    .joinToString(
-                        prefix = "\uD83D\uDC49 ",
-                        separator = "   \uD83D\uDC49 "
-                    ) { it.title }
-            } else {
-                ""
-            }
-        }
-    }
 
     Column(
         modifier = Modifier
@@ -85,15 +65,6 @@ fun HomeScreen(
             onSearch = {
                 navigate(SearchRoute.route)
             },
-        )
-        Spacer(modifier = Modifier.height(mediumPadding1))
-        Text(
-            text = titles,
-            modifier = Modifier
-                .fillMaxWidth()
-                .basicMarquee(),
-            fontSize = 12.sp,
-            color = colorResource(R.color.placeholder)
         )
         Spacer(modifier = Modifier.height(mediumPadding1))
         ArticlesList(
