@@ -10,13 +10,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.composed
 import androidx.compose.ui.draw.clip
@@ -25,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import com.vipuljha.jetnews.R
 import com.vipuljha.jetnews.core.theme.Dimens.articleCardSize
 import com.vipuljha.jetnews.core.theme.Dimens.extraSmallPadding
-import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding1
 
 fun Modifier.shimmerEffect() = composed {
     val transition = rememberInfiniteTransition(label = "")
@@ -47,28 +47,35 @@ fun ArticleCardShimmerEffect(modifier: Modifier = Modifier) {
                 .clip(MaterialTheme.shapes.medium)
                 .shimmerEffect(),
         )
+        Spacer(modifier = Modifier.width(10.dp))
         Column(
             modifier = Modifier
                 .padding(horizontal = extraSmallPadding)
                 .height(articleCardSize),
-            verticalArrangement = Arrangement.SpaceAround
+            verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(30.dp)
-                    .padding(horizontal = mediumPadding1)
-                    .shimmerEffect(),
-            )
-            Row(verticalAlignment = Alignment.CenterVertically) {
+            Column {
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(0.5f)
-                        .height(15.dp)
-                        .padding(horizontal = mediumPadding1)
+                        .fillMaxWidth()
+                        .height(30.dp)
+                        .shimmerEffect(),
+                )
+                Spacer(modifier = Modifier.height(6.dp))
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(30.dp)
                         .shimmerEffect()
                 )
             }
+
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth(0.5f)
+                    .height(15.dp)
+                    .shimmerEffect()
+            )
         }
     }
 }

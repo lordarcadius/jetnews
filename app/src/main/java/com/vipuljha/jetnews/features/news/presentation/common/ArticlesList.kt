@@ -2,21 +2,17 @@ package com.vipuljha.jetnews.features.news.presentation.common
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
-import com.vipuljha.jetnews.core.theme.Dimens.extraSmallPadding2
 import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding1
 import com.vipuljha.jetnews.features.news.domain.models.Article
 
 @Composable
 fun ArticlesList(
-    modifier: Modifier = Modifier,
     articles: LazyPagingItems<Article>,
     onClick: (Article) -> Unit
 ) {
@@ -25,7 +21,6 @@ fun ArticlesList(
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(mediumPadding1),
-            contentPadding = PaddingValues(all = extraSmallPadding2)
         ) {
             items(count = articles.itemCount) {
                 articles[it]?.let { article ->
@@ -67,9 +62,7 @@ private fun handlePagingResult(article: LazyPagingItems<Article>): Boolean {
 private fun ShimmerEffect() {
     Column(verticalArrangement = Arrangement.spacedBy(mediumPadding1)) {
         repeat(10) {
-            ArticleCardShimmerEffect(
-                modifier = Modifier.padding(horizontal = mediumPadding1)
-            )
+            ArticleCardShimmerEffect()
         }
     }
 }

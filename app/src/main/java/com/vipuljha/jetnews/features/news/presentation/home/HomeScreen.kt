@@ -45,7 +45,10 @@ fun HomeScreen(
         derivedStateOf {
             if (articles.itemCount > 10) {
                 articles.itemSnapshotList.items.slice(IntRange(start = 0, endInclusive = 9))
-                    .joinToString(separator = "\uD83d\uDFE5") { it.title }
+                    .joinToString(
+                        prefix = "\uD83D\uDC49 ",
+                        separator = "   \uD83D\uDC49 "
+                    ) { it.title }
             } else {
                 ""
             }
@@ -94,7 +97,6 @@ fun HomeScreen(
         )
         Spacer(modifier = Modifier.height(mediumPadding1))
         ArticlesList(
-            modifier = Modifier.padding(mediumPadding1),
             articles = articles,
             onClick = {
                 navigate(DetailsRoute.route)
