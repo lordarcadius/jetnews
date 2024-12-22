@@ -2,7 +2,6 @@ package com.vipuljha.jetnews.features.news.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,8 +19,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.paging.compose.LazyPagingItems
 import com.vipuljha.jetnews.R
-import com.vipuljha.jetnews.core.navgraph.DetailsRoute
-import com.vipuljha.jetnews.core.navgraph.SearchRoute
 import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding1
 import com.vipuljha.jetnews.core.theme.LogoRed
 import com.vipuljha.jetnews.features.news.domain.models.Article
@@ -59,11 +56,9 @@ fun HomeScreen(
         SearchBar(
             text = "",
             readOnly = true,
-            onClick = {},
+            onClick = { navigateToSearch() },
             onValueChange = {},
-            onSearch = {
-                navigateToSearch()
-            },
+            onSearch = {},
         )
         Spacer(modifier = Modifier.height(mediumPadding1))
         ArticlesList(
