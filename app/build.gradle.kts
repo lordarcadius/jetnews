@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.gradle.secret)
+    id("kotlin-parcelize")
 }
 
 android {

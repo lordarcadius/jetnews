@@ -17,6 +17,11 @@ data object NewsRoute : Route {
 }
 
 @Serializable
+data object HomeRoute : Route {
+    override val route = "homeScreen"
+}
+
+@Serializable
 data object SearchRoute : Route {
     override val route = "searchScreen"
 }
@@ -24,4 +29,9 @@ data object SearchRoute : Route {
 @Serializable
 data object DetailsRoute : Route {
     override val route = "detailsScreen"
+}
+
+@Serializable
+data object BookmarksRoute : Route {
+    override val route = "bookmarksScreen"
 }

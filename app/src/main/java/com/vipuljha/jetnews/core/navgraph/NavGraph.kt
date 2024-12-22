@@ -6,9 +6,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.paging.compose.collectAsLazyPagingItems
-import com.vipuljha.jetnews.features.news.presentation.home.HomeScreen
-import com.vipuljha.jetnews.features.news.presentation.home.HomeViewModel
+import com.vipuljha.jetnews.features.news.presentation.navigator.NewsNavigator
 import com.vipuljha.jetnews.features.onboarding.presentation.screens.OnboardingScreen
 import com.vipuljha.jetnews.features.onboarding.presentation.viewmodels.OnboardingViewModel
 
@@ -22,9 +20,7 @@ fun NavGraph(startDestination: String, innerPadding: PaddingValues) {
         }
 
         composable(NewsRoute.route) {
-            val viewModel: HomeViewModel = hiltViewModel()
-            val articles = viewModel.news.collectAsLazyPagingItems()
-            HomeScreen(articles = articles, navigate = {}, paddingValues = innerPadding)
+            NewsNavigator()
         }
     }
 }

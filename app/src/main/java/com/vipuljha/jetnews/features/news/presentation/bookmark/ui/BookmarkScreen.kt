@@ -16,6 +16,7 @@ import androidx.compose.ui.unit.dp
 import com.vipuljha.jetnews.R
 import com.vipuljha.jetnews.core.navgraph.DetailsRoute
 import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding1
+import com.vipuljha.jetnews.features.news.domain.models.Article
 import com.vipuljha.jetnews.features.news.presentation.bookmark.state.BookmarkState
 import com.vipuljha.jetnews.features.news.presentation.common.ArticlesList
 
@@ -23,7 +24,7 @@ import com.vipuljha.jetnews.features.news.presentation.common.ArticlesList
 fun BookmarkScreen(
     paddingValues: PaddingValues,
     state: BookmarkState,
-    navigate: (String) -> Unit
+    navigateToDetails: (Article) -> Unit
 ) {
 
     Column(
@@ -39,7 +40,7 @@ fun BookmarkScreen(
             color = colorResource(R.color.text_title)
         )
         Spacer(modifier = Modifier.height(mediumPadding1))
-        ArticlesList(articles = state.articles, onClick = { navigate(DetailsRoute.route) })
+        ArticlesList(articles = state.articles, onClick = { navigateToDetails(it) })
     }
 
 }

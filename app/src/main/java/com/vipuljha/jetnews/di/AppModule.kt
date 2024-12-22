@@ -13,6 +13,7 @@ import com.vipuljha.jetnews.features.news.domain.repositories.NewsRepository
 import com.vipuljha.jetnews.features.news.domain.usecases.DeleteArticle
 import com.vipuljha.jetnews.features.news.domain.usecases.GetNews
 import com.vipuljha.jetnews.features.news.domain.usecases.GetSavedArticles
+import com.vipuljha.jetnews.features.news.domain.usecases.GetSingleArticle
 import com.vipuljha.jetnews.features.news.domain.usecases.NewsUseCases
 import com.vipuljha.jetnews.features.news.domain.usecases.SearchNews
 import com.vipuljha.jetnews.features.news.domain.usecases.UpsertArticle
@@ -44,7 +45,8 @@ object AppModule {
             searchNews = SearchNews(repository),
             upsertArticle = UpsertArticle(newsDao),
             deleteArticle = DeleteArticle(newsDao),
-            getSavedArticles = GetSavedArticles(newsDao)
+            getSavedArticles = GetSavedArticles(newsDao),
+            getSingleArticle = GetSingleArticle(newsDao)
         )
     }
 

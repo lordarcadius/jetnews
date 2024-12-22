@@ -22,4 +22,8 @@ interface NewsDao {
     //Get the Flow of all the saved articles
     @Query("SELECT * FROM articles")
     fun select(): Flow<List<Article>>
+
+    //Get one article based on the URL
+    @Query("SELECT * FROM articles WHERE url=:url")
+    fun getArticle(url: String): Article?
 }

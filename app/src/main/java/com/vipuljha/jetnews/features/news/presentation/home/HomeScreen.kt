@@ -32,7 +32,8 @@ import com.vipuljha.jetnews.features.news.presentation.common.SearchBar
 fun HomeScreen(
     paddingValues: PaddingValues,
     articles: LazyPagingItems<Article>,
-    navigate: (String) -> Unit
+    navigateToSearch: () -> Unit,
+    navigateToDetails: (Article) -> Unit,
 ) {
 
     Column(
@@ -63,14 +64,14 @@ fun HomeScreen(
             onClick = {},
             onValueChange = {},
             onSearch = {
-                navigate(SearchRoute.route)
+                navigateToSearch()
             },
         )
         Spacer(modifier = Modifier.height(mediumPadding1))
         ArticlesList(
             articles = articles,
             onClick = {
-                navigate(DetailsRoute.route)
+                navigateToDetails(it)
             }
         )
     }
