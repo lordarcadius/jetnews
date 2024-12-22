@@ -25,5 +25,5 @@ interface NewsDao {
 
     //Get one article based on the URL
     @Query("SELECT * FROM articles WHERE url=:url")
-    fun getArticle(url: String): Article?
+    suspend fun getArticle(url: String): Article?
 }
