@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -110,20 +111,26 @@ fun NewsNavigator(modifier: Modifier = Modifier) {
 
             composable(DetailsRoute.route) {
                 val viewModel: DetailsViewModel = hiltViewModel()
+                val isBookmarked by viewModel.isBookmarked.collectAsState()
+
                 if (viewModel.sideEffect != null) {
                     Toast.makeText(LocalContext.current, viewModel.sideEffect, Toast.LENGTH_SHORT)
                         .show()
                     viewModel.onEvent(DetailsEvent.RemoveSideEffect)
                 }
+
                 navController.previousBackStackEntry?.savedStateHandle?.get<Article>("article")
                     ?.let { article ->
+                        viewModel.checkBookmarkState(article.url)
                         DetailsScreen(
                             article = article,
+                            isBookmarked = isBookmarked,
                             event = viewModel::onEvent,
                             navigateUp = { navController.navigateUp() }
                         )
                     }
             }
+
 
             composable(BookmarksRoute.route) {
                 val viewModel: BookmarkViewModel = hiltViewModel()

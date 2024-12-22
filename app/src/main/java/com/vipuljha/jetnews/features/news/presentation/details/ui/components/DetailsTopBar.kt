@@ -23,6 +23,7 @@ fun DetailsTopBar(
     onShareClick: () -> Unit,
     onBookmarkClick: () -> Unit,
     onBackClick: () -> Unit,
+    bookmarkIcon: Int
 ) {
     TopAppBar(
         title = {},
@@ -39,7 +40,7 @@ fun DetailsTopBar(
         },
         actions = {
             IconButton(onClick = onBookmarkClick) {
-                Icon(painter = painterResource(R.drawable.ic_bookmark), contentDescription = null)
+                Icon(painter = painterResource(bookmarkIcon), contentDescription = null)
             }
             IconButton(onClick = onShareClick) {
                 Icon(imageVector = Icons.Default.Share, contentDescription = null)

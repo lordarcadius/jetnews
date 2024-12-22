@@ -2,17 +2,12 @@ package com.vipuljha.jetnews.features.news.presentation.details.ui
 
 import android.content.Intent
 import android.net.Uri
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -24,16 +19,23 @@ import com.vipuljha.jetnews.R
 import com.vipuljha.jetnews.core.theme.Dimens.articleImageHeight
 import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding1
 import com.vipuljha.jetnews.features.news.domain.models.Article
-import com.vipuljha.jetnews.features.news.presentation.details.ui.components.DetailsTopBar
 import com.vipuljha.jetnews.features.news.presentation.details.states.DetailsEvent
+import com.vipuljha.jetnews.features.news.presentation.details.ui.components.DetailsTopBar
 
 @Composable
 fun DetailsScreen(
     article: Article,
+    isBookmarked: Boolean,
     event: (DetailsEvent) -> Unit,
     navigateUp: () -> Unit
 ) {
     val context = LocalContext.current
+    val bookmarkIcon = if (isBookmarked) {
+        R.drawable.ic_bookmark_filled
+    } else {
+        R.drawable.ic_bookmark
+    }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -58,7 +60,8 @@ fun DetailsScreen(
                 }
             },
             onBookmarkClick = { event(DetailsEvent.UpsertDeleteArticle(article)) },
-            onBackClick = navigateUp
+            onBackClick = navigateUp,
+            bookmarkIcon = bookmarkIcon
         )
 
         LazyColumn(
