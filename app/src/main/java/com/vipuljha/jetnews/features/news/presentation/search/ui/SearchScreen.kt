@@ -20,7 +20,6 @@ import com.vipuljha.jetnews.features.news.presentation.search.states.SearchState
 
 @Composable
 fun SearchScreen(
-    paddingValues: PaddingValues,
     state: SearchState,
     event: (SearchEvent) -> Unit,
     navigateToDetails: (Article) -> Unit
@@ -28,7 +27,6 @@ fun SearchScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues)
             .padding(horizontal = 10.dp)
     ) {
         SearchBar(

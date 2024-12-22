@@ -30,7 +30,6 @@ import com.vipuljha.jetnews.features.news.presentation.common.SearchBar
 
 @Composable
 fun HomeScreen(
-    paddingValues: PaddingValues,
     articles: LazyPagingItems<Article>,
     navigateToSearch: () -> Unit,
     navigateToDetails: (Article) -> Unit,
@@ -39,7 +38,6 @@ fun HomeScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues)
             .padding(horizontal = 10.dp)
     ) {
         Row {

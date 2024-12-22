@@ -22,7 +22,6 @@ import com.vipuljha.jetnews.features.news.presentation.common.ArticlesList
 
 @Composable
 fun BookmarkScreen(
-    paddingValues: PaddingValues,
     state: BookmarkState,
     navigateToDetails: (Article) -> Unit
 ) {
@@ -30,7 +29,6 @@ fun BookmarkScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues)
             .padding(horizontal = 10.dp),
     ) {
 

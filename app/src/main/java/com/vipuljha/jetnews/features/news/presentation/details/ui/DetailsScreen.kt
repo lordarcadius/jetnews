@@ -29,7 +29,6 @@ import com.vipuljha.jetnews.features.news.presentation.details.states.DetailsEve
 
 @Composable
 fun DetailsScreen(
-    paddingValues: PaddingValues,
     article: Article,
     event: (DetailsEvent) -> Unit,
     navigateUp: () -> Unit
@@ -38,7 +37,6 @@ fun DetailsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(paddingValues)
             .padding(horizontal = 10.dp),
     ) {
         DetailsTopBar(

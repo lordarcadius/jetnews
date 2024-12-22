@@ -87,7 +87,6 @@ fun NewsNavigator(modifier: Modifier = Modifier) {
                     navigateToDetails = { article ->
                         navigateToDetailsScreen(navController, article)
                     },
-                    paddingValues = innerPadding
                 )
             }
 
@@ -103,7 +102,6 @@ fun NewsNavigator(modifier: Modifier = Modifier) {
                             article = it
                         )
                     },
-                    paddingValues = innerPadding
                 )
             }
 
@@ -115,8 +113,7 @@ fun NewsNavigator(modifier: Modifier = Modifier) {
                         DetailsScreen(
                             article = article,
                             event = viewModel::onEvent,
-                            paddingValues = innerPadding,
-                            navigateUp = {navController.navigateUp()}
+                            navigateUp = { navController.navigateUp() }
                         )
                     }
             }
@@ -124,9 +121,9 @@ fun NewsNavigator(modifier: Modifier = Modifier) {
             composable(BookmarksRoute.route) {
                 val viewModel: BookmarkViewModel = hiltViewModel()
                 val state = viewModel.state.value
-                BookmarkScreen(state = state, navigateToDetails = {article ->
+                BookmarkScreen(state = state, navigateToDetails = { article ->
                     navigateToDetailsScreen(navController = navController, article = article)
-                }, paddingValues = innerPadding)
+                })
             }
         }
     }
