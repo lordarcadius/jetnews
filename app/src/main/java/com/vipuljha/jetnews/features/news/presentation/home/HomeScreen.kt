@@ -2,6 +2,7 @@ package com.vipuljha.jetnews.features.news.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,15 +28,16 @@ import com.vipuljha.jetnews.features.news.presentation.common.SearchBar
 
 @Composable
 fun HomeScreen(
+    innerPadding: PaddingValues,
     articles: LazyPagingItems<Article>,
     navigateToSearch: () -> Unit,
     navigateToDetails: (Article) -> Unit,
 ) {
-
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 10.dp)
+            .padding(innerPadding)
     ) {
         Row {
             Image(

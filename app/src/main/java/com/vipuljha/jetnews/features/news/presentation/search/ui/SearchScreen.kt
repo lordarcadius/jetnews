@@ -10,7 +10,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.paging.compose.collectAsLazyPagingItems
-import com.vipuljha.jetnews.core.navgraph.DetailsRoute
 import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding1
 import com.vipuljha.jetnews.features.news.domain.models.Article
 import com.vipuljha.jetnews.features.news.presentation.common.ArticlesList
@@ -20,6 +19,7 @@ import com.vipuljha.jetnews.features.news.presentation.search.states.SearchState
 
 @Composable
 fun SearchScreen(
+    innerPadding: PaddingValues,
     state: SearchState,
     event: (SearchEvent) -> Unit,
     navigateToDetails: (Article) -> Unit
@@ -28,6 +28,7 @@ fun SearchScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 10.dp)
+            .padding(innerPadding)
     ) {
         SearchBar(
             text = state.searchQuery,

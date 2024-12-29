@@ -14,7 +14,6 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.vipuljha.jetnews.R
-import com.vipuljha.jetnews.core.navgraph.DetailsRoute
 import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding1
 import com.vipuljha.jetnews.features.news.domain.models.Article
 import com.vipuljha.jetnews.features.news.presentation.bookmark.state.BookmarkState
@@ -22,6 +21,7 @@ import com.vipuljha.jetnews.features.news.presentation.common.ArticlesList
 
 @Composable
 fun BookmarkScreen(
+    innerPadding: PaddingValues,
     state: BookmarkState,
     navigateToDetails: (Article) -> Unit
 ) {
@@ -29,7 +29,8 @@ fun BookmarkScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(horizontal = 10.dp),
+            .padding(horizontal = 10.dp)
+            .padding(innerPadding),
     ) {
 
         Text(

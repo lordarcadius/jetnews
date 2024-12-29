@@ -2,12 +2,11 @@ package com.vipuljha.jetnews.features.news.presentation.navigator
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -39,7 +38,7 @@ import com.vipuljha.jetnews.features.news.presentation.search.states.SearchViewM
 import com.vipuljha.jetnews.features.news.presentation.search.ui.SearchScreen
 
 @Composable
-fun NewsNavigator(modifier: Modifier = Modifier) {
+fun NewsNavigator() {
     val bottomNavigationItems = remember {
         listOf(
             NewsBottomNavigationItem(icon = R.drawable.ic_home, text = "Home"),
@@ -51,7 +50,7 @@ fun NewsNavigator(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
     val backStackState = navController.currentBackStackEntryAsState().value
     var selectedItem by rememberSaveable {
-        mutableStateOf(0)
+        mutableIntStateOf(0)
     }
 
     selectedItem = when (backStackState?.destination?.route) {
@@ -80,12 +79,12 @@ fun NewsNavigator(modifier: Modifier = Modifier) {
             startDestination = HomeRoute.route,
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
         ) {
             composable(HomeRoute.route) {
                 val viewModel: HomeViewModel = hiltViewModel()
                 val articles = viewModel.news.collectAsLazyPagingItems()
                 HomeScreen(
+                    innerPadding = innerPadding,
                     articles = articles,
                     navigateToSearch = { navigateOnClick(navController, SearchRoute.route) },
                     navigateToDetails = { article ->
@@ -98,6 +97,7 @@ fun NewsNavigator(modifier: Modifier = Modifier) {
                 val viewModel: SearchViewModel = hiltViewModel()
                 val state = viewModel.state.value
                 SearchScreen(
+                    innerPadding = innerPadding,
                     state = state,
                     event = viewModel::onEvent,
                     navigateToDetails = {
@@ -135,9 +135,12 @@ fun NewsNavigator(modifier: Modifier = Modifier) {
             composable(BookmarksRoute.route) {
                 val viewModel: BookmarkViewModel = hiltViewModel()
                 val state = viewModel.state.value
-                BookmarkScreen(state = state, navigateToDetails = { article ->
-                    navigateToDetailsScreen(navController = navController, article = article)
-                })
+                BookmarkScreen(
+                    innerPadding = innerPadding,
+                    state = state,
+                    navigateToDetails = { article ->
+                        navigateToDetailsScreen(navController = navController, article = article)
+                    })
             }
         }
     }
