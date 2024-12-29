@@ -23,8 +23,8 @@ fun NewsBottomNavigation(
 ) {
     NavigationBar(
         modifier = Modifier.fillMaxWidth(),
-        containerColor = MaterialTheme.colorScheme.background,
-        tonalElevation = 10.dp
+        containerColor = MaterialTheme.colorScheme.surface,
+        tonalElevation = 2.dp,
     ) {
         items.forEachIndexed { index, item ->
             NavigationBarItem(
