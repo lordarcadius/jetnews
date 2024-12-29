@@ -13,7 +13,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.vipuljha.jetnews.R
 import com.vipuljha.jetnews.core.theme.Dimens.articleImageHeight
@@ -38,8 +40,7 @@ fun DetailsScreen(
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 10.dp),
+            .fillMaxSize(),
     ) {
         DetailsTopBar(
             onBrowseClick = {
@@ -84,13 +85,12 @@ fun DetailsScreen(
                 Spacer(modifier = Modifier.height(mediumPadding1))
                 Text(
                     text = article.title,
-                    style = MaterialTheme.typography.displaySmall,
-                    color = colorResource(R.color.text_title)
+                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                 )
+                Spacer(modifier = Modifier.height(mediumPadding1))
                 Text(
                     text = article.content,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = colorResource(R.color.body)
+                    style = MaterialTheme.typography.bodyMedium.copy(fontSize = 16.sp),
                 )
             }
         }

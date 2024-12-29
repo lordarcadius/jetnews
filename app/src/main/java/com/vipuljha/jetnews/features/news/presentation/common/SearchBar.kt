@@ -103,7 +103,7 @@ fun Modifier.searchBarBorder() = composed {
     if (!isSystemInDarkTheme()) {
         border(
             width = 1.dp,
-            color = Color.Black,
+            color = MaterialTheme.colorScheme.surfaceTint,
             shape = MaterialTheme.shapes.medium
         )
     } else {

@@ -24,6 +24,7 @@ import com.vipuljha.jetnews.core.theme.Dimens.mediumPadding1
 import com.vipuljha.jetnews.core.theme.LogoRed
 import com.vipuljha.jetnews.features.news.domain.models.Article
 import com.vipuljha.jetnews.features.news.presentation.common.ArticlesList
+import com.vipuljha.jetnews.features.news.presentation.common.HeaderBar
 import com.vipuljha.jetnews.features.news.presentation.common.SearchBar
 
 @Composable
@@ -39,21 +40,7 @@ fun HomeScreen(
             .padding(horizontal = 10.dp)
             .padding(innerPadding)
     ) {
-        Row {
-            Image(
-                painter = painterResource(R.drawable.ic_logo),
-                contentDescription = null,
-                modifier = Modifier
-                    .height(30.dp)
-            )
-            Spacer(modifier = Modifier.width(10.dp))
-            Text(
-                text = stringResource(R.string.app_name),
-                style = TextStyle(fontSize = 26.sp),
-                fontWeight = FontWeight.Medium,
-                color = LogoRed
-            )
-        }
+        HeaderBar(title = stringResource(R.string.app_name))
         Spacer(modifier = Modifier.height(mediumPadding1))
         SearchBar(
             text = "",
